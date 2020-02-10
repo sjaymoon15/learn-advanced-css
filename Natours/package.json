@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "node-sass starter/sass/main.scss starter/css/style.css -w"
+    "compile:sass": "node-sass starter/sass/main.scss starter/css/style.css -w",
+    "live-server": "live-server"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "node-sass": "^4.13.1"
+  },
+  "dependencies": {
+    "live-server": "^1.2.1"
   }
 }

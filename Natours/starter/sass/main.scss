@@ -11,6 +11,10 @@ $color-primary: #55c57a;
 $color-primary-light: #7ed56f;
 $color-primary-dark: #28b485;
 
+$color-grey-dark: #777;
+$color-white: #fff;
+$color-black: #000;
+
 * {
   margin: 0;
   padding: 0;
@@ -41,7 +45,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.7;
-  color: #777;
+  color: $color-grey-dark;
   padding: 3rem;
 
   box-sizing: border-box;
@@ -60,58 +64,58 @@ body {
   position: relative;
 
   clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
-}
 
-.header__logo-box {
-  position: absolute;
-  top: 4rem;
-  left: 4rem;
-}
+  &__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
 
-.header__logo {
-  height: 3.5rem;
-}
+  &__logo {
+    height: 3.5rem;
+  }
 
-.header__text-box {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 }
 
 .heading-primary {
-  color: #ffffff;
+  color: $color-white;
   text-transform: uppercase;
 
   /* backface-visibility: hidden; */
 
   margin-bottom: 6rem;
-}
 
-.heading-primary--main {
-  display: block;
-  font-size: 6rem;
-  font-weight: 400;
-  letter-spacing: 3.5rem;
+  &--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
 
-  animation-name: moveInLeft;
-  animation-duration: 2s;
-  animation-timing-function: ease-out;
+    animation-name: moveInLeft;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
 
-  /* 
-  animation-delay: 2s;
-  animation-iteration-count: 3; 
-*/
-}
+    /* 
+    animation-delay: 2s;
+    animation-iteration-count: 3; 
+  */
+  }
 
-.heading-primary--sub {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 1.5rem;
+  &--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.5rem;
 
-  animation: moveInRight 2s ease-out;
+    animation: moveInRight 2s ease-out;
+  }
 }
 
 @keyframes moveInLeft {
@@ -162,63 +166,66 @@ body {
   }
 }
 
-.btn:link,
-.btn:visited {
-  text-transform: uppercase;
-  text-decoration: none;
-  padding: 1.5rem 4rem;
-  display: inline-block;
-  border-radius: 10rem;
-  /* transition property need to be on initial state */
-  /* also gives this transition effect to btn:hover, active transform */
-  transition: all 0.2s;
+.btn {
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem;
+    /* transition property need to be on initial state */
+    /* also gives this transition effect to btn:hover, active transform */
+    transition: all 0.2s;
 
-  /* to give relative for the btn:after position: absolute */
-  position: relative;
+    /* to give relative for the btn:after position: absolute */
+    position: relative;
 
-  font-size: 1.6rem;
-  /* animation: moveInBottom 2s ease-out; */
-}
+    font-size: 1.6rem;
+    /* animation: moveInBottom 2s ease-out; */
+  }
 
-.btn:hover {
-  transform: translateY(-0.3rem);
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
-}
+  &:hover {
+    transform: translateY(-0.3rem);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
 
-.btn:active {
-  transform: translateX(-0.1rem);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
-}
+    /* we want to see after element when it's hovered */
+    &::after {
+      transform: scaleX(1.4) scaleY(1.7);
+      opacity: 0;
+    }
+  }
 
-.btn--white {
-  background-color: #ffffff;
-  color: #777;
-}
+  &:active {
+    transform: translateX(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
 
-.btn::after {
-  /* content and display property need here  */
-  content: '';
-  display: inline-block;
-  height: 100%;
-  width: 100%;
-  border-radius: 10rem;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-  transition: all 0.4s;
-}
+  &::after {
+    /* content and display property need here  */
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
 
-.btn--white::after {
-  background-color: #fff;
-}
-/* we want to see after element when it's hovered */
-.btn:hover::after {
-  transform: scaleX(1.4) scaleY(1.7);
-  opacity: 0;
-}
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
 
-.btn--animated {
-  animation: moveInBottom 0.5s ease-out 0.5s;
-  animation-fill-mode: backwards;
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.5s;
+    animation-fill-mode: backwards;
+  }
 }
