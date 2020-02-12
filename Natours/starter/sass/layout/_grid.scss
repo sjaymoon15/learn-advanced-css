@@ -1,0 +1,22 @@
+.row {
+  // max-width: 1140px;
+  max-width: $grid-width;
+  background-color: #eee;
+  margin: 0 auto; //center elements inside this row
+  margin-bottom: $gutter-vertical;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .col-1-of-2 {
+    width: calc((100% - #{$gutter-horizontal}) / 2);
+    background-color: orange;
+    margin-right: $gutter-horizontal;
+    float: left;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
