@@ -1,7 +1,5 @@
 .row {
-  // max-width: 1140px;
-  max-width: $grid-width;
-  background-color: #eee;
+  max-width: $grid-width; // max-width: 1140px;
   margin: 0 auto; //center elements inside this row
   margin-bottom: $gutter-vertical;
 
@@ -15,7 +13,6 @@
   // select classes that includes with *..
   // select classes that end with ..$
   [class^='col-'] {
-    background-color: orange;
     margin-right: $gutter-horizontal;
     float: left;
 
