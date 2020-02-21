@@ -1,14 +1,13 @@
 .card {
+  // functionality
   perspective: 150rem;
   -moz-perspective: 150rem;
   position: relative;
   height: 50rem;
 
   &__side {
-    background-color: orangered;
-    color: #fff;
     font-size: 2rem;
-    height: 50rem;
+    height: 52rem;
     transition: all 0.8s ease;
     position: absolute;
     top: 0;
@@ -16,6 +15,7 @@
     width: 100%;
     backface-visibility: hidden;
     border-radius: 3px;
+    overflow: hidden; // prevent child img overflow and hide border radius effect
     box-shadow: 0 1.5rem 4rem rgba($color: $color-black, $alpha: 0.15);
 
     &--front {
@@ -38,16 +38,82 @@
 
   // when hover on card, transform takes effect on __side.
   &:hover &__side--front {
-    transform: rotateY(180deg);
+    transform: rotateY(-180deg);
   }
 
   &:hover &__side--back {
     transform: rotateY(0);
   }
 
-  // &:hover {
-  //   background-color: white;
-  // }
+  // front side styling
+  &__picture {
+    background-size: cover;
+    height: 23rem;
+    background-blend-mode: screen;
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+
+    &--1 {
+      background-image: linear-gradient(
+          to right bottom,
+          $color-secondary-light,
+          $color-secondary-dark
+        ),
+        url(../img/nat-5.jpg); // relative location from styles.css file
+    }
+
+    &--2 {
+      background-image: url(../img/nat-5.img);
+    }
+
+    &--3 {
+      background-image: url(../img/nat-5.img);
+    }
+  }
+
+  &__heading {
+    font-size: 2.8rem;
+    text-transform: uppercase;
+    color: $color-white;
+    position: absolute;
+    text-align: right;
+    top: 10rem;
+    right: 2rem;
+    width: 60%;
+  }
+
+  &__heading-span {
+    padding: 1rem, 1.5rem;
+    -webkit-box-decoration-break: clone; //treat each broke block individually.
+    box-decoration-break: clone;
+    &--1 {
+      background-image: linear-gradient(
+        to right bottom,
+        rgba($color-secondary-light, 0.85),
+        rgba($color-secondary-dark, 0.85)
+      );
+    }
+  }
+
+  &__details {
+    padding: 3rem;
+
+    ul {
+      list-style: none;
+      width: 80%;
+      margin: 0 auto;
+
+      li {
+        text-align: center;
+        font-size: 1.5rem;
+        padding: 1rem;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $color-grey-light-2;
+        }
+      }
+    }
+  }
 }
 
 // another way
